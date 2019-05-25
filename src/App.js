@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import LongTermWeather from './components/LongTermWeather/LongTermWeather';
+import SearchWeather from './components/SearchWeather/SearchWeather';
+import Panel from './components/Panel/Panel';
+import Layout from './containers/Layout/Layout';
+
+const App = () => {
+  const routes = (
+
+    <Switch>
+      <Layout>
+        <Route path='/current' component={CurrentWeather} />
+        <Route path='/longterm' component={LongTermWeather} />
+        <Route path='/search' component={SearchWeather} />
+        <Route path='/' exact component={Panel} />
+      </Layout>
+    </Switch>
+
   );
-}
 
-export default App;
+  return (
+    <div>
+      {routes}
+    </div>
+  )
+
+};
+
+export default withRouter(App);
