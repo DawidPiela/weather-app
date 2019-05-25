@@ -1,29 +1,38 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
-import CurrentWeather from './components/CurrentWeather/CurrentWeather';
-import LongTermWeather from './components/LongTermWeather/LongTermWeather';
-import SearchWeather from './components/SearchWeather/SearchWeather';
 import Panel from './components/Panel/Panel';
 import Layout from './containers/Layout/Layout';
 
+const CurrentWeather = React.lazy(() => {
+  return import('./components/CurrentWeather/CurrentWeather');
+});
+
+const LongTermWeather = React.lazy(() => {
+  return import('./components/LongTermWeather/LongTermWeather');
+});
+
+const SearchWeather = React.lazy(() => {
+  return import('./components/SearchWeather/SearchWeather');
+});
+
 const App = () => {
   const routes = (
-
     <Switch>
-      <Layout>
-        <Route path='/current' component={CurrentWeather} />
-        <Route path='/longterm' component={LongTermWeather} />
-        <Route path='/search' component={SearchWeather} />
-        <Route path='/' exact component={Panel} />
-      </Layout>
+      <Route path='/current' render={props => <CurrentWeather {...props} />} />
+      <Route path='/longterm' render={props => <LongTermWeather {...props} />} />
+      <Route path='/search' render={props => <SearchWeather {...props} />} />
+      <Route path='/' exact component={Panel} />
     </Switch>
-
   );
 
   return (
     <div>
-      {routes}
+      <Layout>
+        <Suspense fallback={<p>Loading...</p>}>
+          {routes}
+        </Suspense>
+      </Layout>
     </div>
   )
 
