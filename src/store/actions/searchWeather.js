@@ -15,14 +15,15 @@ export const fetchWeatherFailed = () => {
   }
 }
 
-export const initWeather = () => {
+export const initWeather = (city) => {
+  console.log('api called', city);
   return dispatch => {
-    axios.get('data/2.5/forecast?id=524901&APPID=6628a1835fed01ea65e1905d03b57f12')
+    axios.get('data/2.5/forecast?q=' + city + '&APPID=6628a1835fed01ea65e1905d03b57f12')
       .then(response => {
-        // dispatch(setWeather(response.data));
+        dispatch(setWeather(response.data));
       })
       .catch(error => {
-        // dispatch(fetchWeatherFailed());
+        dispatch(fetchWeatherFailed());
       })
   }
 }

@@ -1,20 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
 import axios from '../../axiosInstance';
+import WeatherInfo from '../WeatherInfo/WeatherInfo';
 
 const SearchWeather = props => {
-  const [setWeather] = useState(false);
+  const [searchState, setSearchState] = useState({ userInput: '' });
 
-  useEffect(() => {
-    props.onInitWeather();
-  }, []);
+  const searchWeatherHandler = () => {
+    props.onInitWeather(searchState.userInput);
+  }
+
+  const inputChangedHandler = event => {
+    event.preventDefault();
+    setSearchState({ userInput: event.target.value })
+  }
+
+  const data = props.weather;
 
   return (
-    <div>
-      
-    </div>
+    <>
+      <div>
+        <input onChange={(event) => inputChangedHandler(event)} />
+        <button
+          onClick={searchWeatherHandler}>
+          Search Weather
+      </button>
+      </div>
+      {!data ? null :
+        <WeatherInfo data={data} />
+      }
+    </>
   );
 
 };
@@ -27,7 +44,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitWeather: () => dispatch(actions.initWeather())
+    onInitWeather: (city) => dispatch(actions.initWeather(city))
   }
 }
 

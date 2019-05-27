@@ -13,7 +13,9 @@ const setWeather = (state, action) => {
 };
 
 const fetchWeatherFailed = (state, action) => {
-  return updateObject(state, { error: true });
+  return updateObject(state, {
+    error: true
+  });
 };
 
 const reducer = (state = initialState, action) => {
