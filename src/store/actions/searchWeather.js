@@ -16,9 +16,8 @@ export const fetchSearchWeatherFailed = () => {
 }
 
 export const initSearchWeather = (city) => {
-  console.log('api called', city);
   return dispatch => {
-    axios.get('data/2.5/forecast?q=' + city + '&APPID=6628a1835fed01ea65e1905d03b57f12')
+    axios.get('data/2.5/weather?q=' + city + '&APPID=6628a1835fed01ea65e1905d03b57f12')
       .then(response => {
         dispatch(setSearchWeather(response.data));
       })

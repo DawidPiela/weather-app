@@ -16,14 +16,20 @@ export const fetchLongtermWeatherFailed = () => {
 }
 
 export const initLongtermWeather = (coordinates) => {
-  console.log('api called', coordinates);
   return dispatch => {
-    axios.get('' + coordinates + '&APPID=6628a1835fed01ea65e1905d03b57f12')
-      .then (response => {
-        dispatch(setLongtermWeather(response.data));
-      })
-      .catch(error => {
-        dispatch(fetchLongtermWeatherFailed());
-      })
+    const storage = window.localStorage;
+
+    if (storage.getItem('lat') !== coordinates[0].toString() &&
+      storage.getItem('lon') !== coordinates[1].toString()) {
+      axios.get('data/2.5/forecast?lat=' + coordinates[0] + '&lon=' + coordinates[1] + '&APPID=6628a1835fed01ea65e1905d03b57f12')
+        .then(response => {
+          storage.setItem('lat', coordinates[0]);
+          storage.setItem('lon', coordinates[1]);
+          dispatch(setLongtermWeather(response.data));
+        })
+        .catch(error => {
+          dispatch(fetchLongtermWeatherFailed());
+        })
+    }
   }
 }

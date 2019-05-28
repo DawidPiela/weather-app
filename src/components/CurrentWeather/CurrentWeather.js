@@ -1,28 +1,43 @@
-import React, {useState} from 'react';
-import {connect} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
 import axios from '../../axiosInstance';
 import WeatherInfo from '../WeatherInfo/WeatherInfo';
+import SmogInfo from '../SmogInfo/SmogInfo';
 
 const CurrentWeather = props => {
-  const [currentState, setCurrentState] = useState({userCoordinates: []});
+  const [currentState, setCurrentState] = useState({ userCoordinates: [] });
 
-  const currentWeatherHandler = () => {
-    props.onInitWeather(currentState.userCoordinates);
+  useEffect(() => {
+    if (navigator.geolocation) {
+      const geoLoc = navigator.geolocation;
+      geoLoc.watchPosition(setLocationData)
+      if (typeof currentState.userCoordinates[0] === 'number') {
+        props.onInitWeather(currentState.userCoordinates);
+        window.localStorage.clear();
+      }
+    }
+  });
+
+
+  const setLocationData = (position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    setCurrentState({ userCoordinates: [lat, lon] });
   }
 
-  const coordinatesHandler = () => {
-    //
-    setCurrentState({userCoordinates: []})
-  }
-
-  const data = props.weather;
+  const weatherData = props.weather;
+  const smogData = props.smog;
 
   return (
     <>
-      {!data ? null :
-        <WeatherInfo data={data} />
+      {!weatherData ? null :
+        <WeatherInfo data={weatherData} />
+      }
+      {!smogData ? null :
+        <SmogInfo data={smogData} />
       }
     </>
   );
@@ -32,6 +47,7 @@ const CurrentWeather = props => {
 const mapStateToProps = state => {
   return {
     weather: state.currentWeather.weather,
+    smog: state.currentWeather.smog,
     error: state.currentWeather.error
   }
 }

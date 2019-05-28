@@ -9,7 +9,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import searchReducer from './store/reducers/searchWeather';
 import currentReducer from './store/reducers/currentWeather';
-import longtermReducer from './store/reducers/currentWeather';
+import longtermReducer from './store/reducers/longtermWeather';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
