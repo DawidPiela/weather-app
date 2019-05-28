@@ -1,18 +1,18 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from './updateObject';
+import {updateObject} from './updateObject';
 
 const initialState = {
   weather: null,
   error: false
-};
+}
 
-const setSearchWeather = (state, action) => {
+const setCurrentWeather = (state, action) => {
   return updateObject(state, {
     weather: action.weather
   });
 };
 
-const fetchSearchWeatherFailed = (state, action) => {
+const fetchCurrentWeatherFailed = (state, action) => {
   return updateObject(state, {
     error: true
   });
@@ -20,10 +20,10 @@ const fetchSearchWeatherFailed = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SET_SEARCHED_WEATHER:
-      return setSearchWeather(state, action);
-    case actionTypes.FETCH_SEARCHED_WEATHER_FAILED:
-      return fetchSearchWeatherFailed(state, action);
+    case actionTypes.SET_CURRENT_WEATHER:
+      return setCurrentWeather(state, action);
+    case actionTypes.FETCH_CURRENT_WEATHER_FAILED:
+      return fetchCurrentWeatherFailed(state, action);
     default: return state;
   }
 };

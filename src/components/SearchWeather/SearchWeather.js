@@ -35,6 +35,7 @@ const SearchWeather = props => {
   );
 
 };
+
 const mapStateToProps = state => {
   return {
     weather: state.searchWeather.weather,
@@ -44,7 +45,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitWeather: (city) => dispatch(actions.initWeather(city))
+    onInitWeather: (city) => dispatch(actions.initSearchWeather(city))
   }
 }
 
