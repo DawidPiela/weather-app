@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import styles from './Navigation.module.scss';
+
 const navigation = () => (
   <nav>
-    <ul>
+    <ul className={styles.navigation}>
       <li>
         <NavLink to='/search'>Search for the weather</NavLink>
       </li>

@@ -1,0 +1,47 @@
+$phone: 'only screen and (min-width: 768px)';
+$tablet: 'only screen and (min-width: 992px)';
+$desktop: 'only screen and (min-width: 1200px)';
+
+.navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  flex-direction: column;
+  @media #{$tablet} {
+    justify-content: space-around;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+  }
+  @media #{$desktop} {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    border-bottom: 1px solid black;
+  }
+  a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 24px;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    &:hover {
+      background: blue;
+    }
+    @media #{$tablet} {
+      font-size: 20px;
+      border: none;
+    }
+    @media #{$tablet} {
+      font-size: 16px;
+    }
+  }
+}
+
