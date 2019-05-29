@@ -14,7 +14,6 @@ const LongTermWeather = props => {
       geoLoc.watchPosition(setLocationData)
       if (typeof longtermState.userCoordinates[0] === 'number') {
         props.onInitWeather(longtermState.userCoordinates);
-        window.localStorage.clear();
       }
     }
   });

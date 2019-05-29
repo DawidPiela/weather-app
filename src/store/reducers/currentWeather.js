@@ -4,6 +4,7 @@ import { updateObject } from './updateObject';
 const initialState = {
   weather: null,
   smog: null,
+  coordinates: null,
   error: false
 }
 
@@ -18,6 +19,12 @@ const fetchCurrentWeatherFailed = (state, action) => {
     error: true
   });
 };
+
+const onFetchWeather = (state, action) => {
+  return updateObject(state, {
+    coordinates: action.coordinates
+  })
+}
 
 const setCurrentSmog = (state, action) => {
   return updateObject(state, {
@@ -37,6 +44,8 @@ const reducer = (state = initialState, action) => {
       return setCurrentWeather(state, action);
     case actionTypes.FETCH_CURRENT_WEATHER_FAILED:
       return fetchCurrentWeatherFailed(state, action);
+    case actionTypes.ON_FETCH_WEATHER:
+      return onFetchWeather(state, action);
     case actionTypes.SET_CURRENT_SMOG:
       return setCurrentSmog(state, action);
     case actionTypes.FETCH_CURRENT_SMOG_FAILED:
