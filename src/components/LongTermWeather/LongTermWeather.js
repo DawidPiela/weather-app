@@ -37,11 +37,11 @@ export const LongTermWeather = ({ weather, onFetchLongtermWeather }) => {
   };
 
   return (
-    <Fragment>
+    <div className='longterm-container'>
       <h3>Weather Info for {weather.city.name}</h3>
       {Object.values(weather.list).filter(oneDay).map((element) => (
         <WeatherInfo key={element.dt} data={element} />
       ))}
-    </Fragment>
+    </div>
   );
 };

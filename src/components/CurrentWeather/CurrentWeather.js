@@ -26,9 +26,9 @@ export const CurrentWeather = ({ weather, smog, onFetchWeather, onFetchSmog }) =
   }
 
   return (
-    <Fragment>
+    <div className='current-container'>
       <WeatherInfo data={weather} />
       <SmogInfo data={smog} />
-    </Fragment>
+    </div>
   );
 };

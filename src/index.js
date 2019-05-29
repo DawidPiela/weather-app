@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './index.module.scss';
+import './shared/main.scss';
 import searchReducer from './store/reducers/searchWeather';
 import currentReducer from './store/reducers/currentWeather';
 import longtermReducer from './store/reducers/longtermWeather';

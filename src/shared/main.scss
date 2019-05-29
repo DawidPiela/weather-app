@@ -1,0 +1,125 @@
+.longterm-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  h3 {
+    margin: 20px;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    color: black;
+    font-size: 25px;
+  }
+}
+
+.current-container {
+  .weather-info, .smog-info {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 5px;
+  }
+}
+
+.weather-info__list, .smog-info__list {
+  list-style: none;
+  padding: 20px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 5px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
+}
+
+.weather-info__list-item, .smog-info__list-item {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #B8B8B8;
+}
+
+.weather-info__date-item, {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  color: darken(#B8B8B8, 10%);
+  padding-bottom: 5px;
+}
+
+.weather-info__header {
+  width: 100%;
+  margin: 20px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  color: black;
+}
+
+.search-container {
+  margin: 25px;
+  .search-button {
+    background-color: #2dabf9;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #0b0e07;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 17px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    padding: 6px 21px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #263666;
+  }
+  .search-button:hover {
+    background-color: #0688fa;
+  }
+  .search-button:active {
+    position: relative;
+    top: 1px;
+  }
+  input[type=text] {
+    color: #2dabf9;
+    border: none;
+    border-bottom: 1px solid #2dabf9;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding-left: 5px;
+    height: 30px;
+  }
+  ::placeholder {
+    color: #2dabf9;
+    opacity: 1;
+  }
+}
+
+.search-area {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}

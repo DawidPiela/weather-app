@@ -15,10 +15,14 @@ export const SearchWeather = ({ weather, onFetchSearchWeather }) => {
   }
 
   return (
-    <Fragment>
-      <div>
-        <input onChange={(event) => inputChangedHandler(event)} />
+    <div className='search-container'>
+      <div className='search-area'>
+        <input
+          type='text'
+          className='search-input'
+          onChange={(event) => inputChangedHandler(event)} />
         <button
+          className='search-button'
           onClick={searchWeatherHandler}>
           Search Weather
        </button>
@@ -26,6 +30,6 @@ export const SearchWeather = ({ weather, onFetchSearchWeather }) => {
       {!weather ? null :
         <WeatherInfo data={weather} />
       }
-    </Fragment >
+    </div>
   );
 };
