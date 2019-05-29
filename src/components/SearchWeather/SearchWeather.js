@@ -1,52 +1,31 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, Fragment } from 'react';
 
-import * as actions from '../../store/actions/index';
-import axios from '../../axiosInstance';
-import WeatherInfo from '../WeatherInfo/WeatherInfo';
+import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 
-const SearchWeather = props => {
-  const [searchState, setSearchState] = useState({ userInput: '' });
+export const SearchWeather = ({ weather, onFetchSearchWeather }) => {
+  const [city, setCity] = useState('');
 
   const searchWeatherHandler = () => {
-    props.onInitWeather(searchState.userInput);
+    onFetchSearchWeather(city);
   }
 
   const inputChangedHandler = event => {
     event.preventDefault();
-    setSearchState({ userInput: event.target.value })
+    setCity(event.target.value)
   }
 
-  const data = props.weather;
-
   return (
-    <>
+    <Fragment>
       <div>
         <input onChange={(event) => inputChangedHandler(event)} />
         <button
           onClick={searchWeatherHandler}>
           Search Weather
-      </button>
+       </button>
       </div>
-      {!data ? null :
-        <WeatherInfo data={data} />
+      {!weather ? null :
+        <WeatherInfo data={weather} />
       }
-    </>
+    </Fragment >
   );
-
 };
-
-const mapStateToProps = state => {
-  return {
-    weather: state.searchWeather.weather,
-    error: state.searchWeather.error
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onInitWeather: (city) => dispatch(actions.initSearchWeather(city))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchWeather, axios);

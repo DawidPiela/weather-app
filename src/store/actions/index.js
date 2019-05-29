@@ -1,17 +1,16 @@
 export {
   setSearchWeather,
   fetchSearchWeatherFailed,
-  initSearchWeather
 } from './searchWeather';
 
 export {
   setCurrentWeather,
   fetchCurrentWeatherFailed,
-  initCurrentWeather
+  setCurrentSmog,
+  fetchCurrentSmogFailed,
 } from './currentWeather';
 
 export {
   setLongtermWeather,
   fetchLongtermWeatherFailed,
-  initLongtermWeather
 } from './longtermWeather';

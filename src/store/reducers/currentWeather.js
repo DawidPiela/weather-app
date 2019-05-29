@@ -1,46 +1,24 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from './updateObject';
 
 const initialState = {
   weather: null,
   smog: null,
+  coordinates: null,
   error: false
 }
-
-const setCurrentWeather = (state, action) => {
-  return updateObject(state, {
-    weather: action.weather
-  });
-};
-
-const fetchCurrentWeatherFailed = (state, action) => {
-  return updateObject(state, {
-    error: true
-  });
-};
-
-const setCurrentSmog = (state, action) => {
-  return updateObject(state, {
-    smog: action.smog
-  });
-};
-
-const fetchCurrentSmogFailed = (state, action) => {
-  return updateObject(state, {
-    error: true
-  });
-};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_CURRENT_WEATHER:
-      return setCurrentWeather(state, action);
+      return { ...state, weather: action.payload.weather }
     case actionTypes.FETCH_CURRENT_WEATHER_FAILED:
-      return fetchCurrentWeatherFailed(state, action);
+      return { ...state, error: true }
+    case actionTypes.ON_FETCH_WEATHER:
+      return { ...state, coordinates: action.payload.coordinates }
     case actionTypes.SET_CURRENT_SMOG:
-      return setCurrentSmog(state, action);
+      return { ...state, smog: action.payload.smog }
     case actionTypes.FETCH_CURRENT_SMOG_FAILED:
-      return fetchCurrentSmogFailed(state, action);
+      return { ...state, error: true }
     default: return state;
   }
 };
