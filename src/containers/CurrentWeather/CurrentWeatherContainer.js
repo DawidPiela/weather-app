@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 
 import { CurrentWeather } from '../../components/CurrentWeather/CurrentWeather';
 import * as actions from '../../store/actions/index';
-import fetchWeatherData from '../../utils/requests/fetchCurrentWeather';
-import fetchSmogData from '../../utils/requests/fetchSmog';
+import fetchWeatherData from '../../api/requests/fetchCurrentWeather';
+import fetchSmogData from '../../api/requests/fetchSmog';
 
 const mapStateToProps = ({ currentWeather: { weather, smog, error } }) => ({
   weather,

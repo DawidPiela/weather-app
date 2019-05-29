@@ -1,21 +1,24 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import LongTermWeather from '../LongTermWeather/LongTermWeather';
-import SearchWeather from '../SearchWeather/SearchWeather';
+const SearchWeather = React.lazy(() => {
+  return import('../../containers/SearchWeather/SearchWeatherContainer');
+});
 
 const CurrentWeather = React.lazy(() => {
   return import('../../containers/CurrentWeather/CurrentWeatherContainer');
 });
 
+const LongTermWeather = React.lazy(() => {
+  return import('../../containers/LongTermWeather/LongTermWeatherContainer');
+});
+
 const Panel = () => (
   <>
     <div>
-      {/* <CurrentWeatherContainer /> */}
       <Switch>
         <Route path='/search' component={SearchWeather} />
         <Route path='/current' component={CurrentWeather} />
-        {/* <Route path='/current' render={props => <CurrentWeatherContainer {...props} />} /> */}
         <Route path='/longterm' component={LongTermWeather} />
       </Switch>
     </div>

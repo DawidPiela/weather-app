@@ -9,19 +9,19 @@ const CurrentWeather = React.lazy(() => {
 });
 
 const LongTermWeather = React.lazy(() => {
-  return import('./components/LongTermWeather/LongTermWeather');
+  return import('./containers/LongTermWeather/LongTermWeatherContainer');
 });
 
 const SearchWeather = React.lazy(() => {
-  return import('./components/SearchWeather/SearchWeather');
+  return import('./containers/SearchWeather/SearchWeatherContainer');
 });
 
 const App = () => {
   const routes = (
     <Switch>
       <Route path='/current' component={CurrentWeather} />} />
-      <Route path='/longterm' render={props => <LongTermWeather {...props} />} />
-      <Route path='/search' render={props => <SearchWeather {...props} />} />
+      <Route path='/longterm' component={LongTermWeather} />
+      <Route path='/search' component={SearchWeather} />
       <Route path='/' exact component={Panel} />
     </Switch>
   );
