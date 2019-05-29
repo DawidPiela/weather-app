@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 
 import { CurrentWeather } from '../../components/CurrentWeather/CurrentWeather';
 import * as actions from '../../store/actions/index';
-import openWeatherInstance from '../../utils/openWeatherMapApi';
-import airlyInstance from '../../utils/airlyApi';
+import fetchWeatherData from '../../utils/requests/fetchCurrentWeather';
+import fetchSmogData from '../../utils/requests/fetchSmog';
 
 const mapStateToProps = ({ currentWeather: { weather, smog, error } }) => ({
   weather,
@@ -13,34 +13,21 @@ const mapStateToProps = ({ currentWeather: { weather, smog, error } }) => ({
 
 const mapDispatchToProps = dispatch => ({
   onFetchWeather: coordinates =>
-    openWeatherInstance
-      .get('data/2.5/weather', {
-        params: {
-          lat: coordinates.latitude,
-          lon: coordinates.longitude,
-          APPID: '6628a1835fed01ea65e1905d03b57f12'
-        }
-      })
+    fetchWeatherData(coordinates)
       .then(response => {
-        dispatch(actions.setCurrentWeather(response.data));
+        dispatch(actions.setCurrentWeather(response));
       })
       .catch(() => {
         dispatch(actions.fetchCurrentWeatherFailed());
-      }),
+      })
+  ,
   onFetchSmog: coordinates =>
-    airlyInstance
-      .get('measurements/nearest', {
-        params: {
-          lat: coordinates.latitude,
-          lng: coordinates.longitude,
-          apikey: 'PfrEDPGZPWlI18uC84zXH0S0FQ8vH41z'
-        }
-      })
+    fetchSmogData(coordinates)
       .then(response => {
-        dispatch(actions.setCurrentSmog(response.data));
+        dispatch(actions.setCurrentSmog(response));
       })
-      .catch(error => {
-        dispatch(actions.fetchCurrentSmogFailed());
+      .catch((error) => {
+        dispatch(actions.fetchCurrentWeatherFailed());
       })
 });
 
