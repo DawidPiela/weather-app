@@ -8,7 +8,7 @@ const fetchData = async (coordinates) => {
       params: {
         lat: coordinates.latitude,
         lng: coordinates.longitude,
-        apikey: 'PfrEDPGZPWlI18uC84zXH0S0FQ8vH41z'
+        apikey: process.env.REACT_APP_AIRLY_KEY
       }
     });
 

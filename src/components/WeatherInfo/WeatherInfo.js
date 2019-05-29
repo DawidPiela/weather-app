@@ -11,7 +11,7 @@ const WeatherInfo = props => {
     const date = new Date(data.dt_txt);
     const day = date.getDate();
     const month = monthNames[date.getMonth()];
-    dateInfo = (<li>date: {day} {month}</li>)
+    dateInfo = (<li>Date: {day} {month}</li>)
   }
 
   const cityName = data.name;

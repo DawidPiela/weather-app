@@ -4,7 +4,7 @@ import Item from './Item';
 
 const SmogInfo = props => {
   const data = props.data;
-
+  
   return (
     <div>
       <ul>

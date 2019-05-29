@@ -7,7 +7,7 @@ const fetchData = async (city) => {
       url: 'data/2.5/weather',
       params: {
         q: city,
-        APPID: '6628a1835fed01ea65e1905d03b57f12'
+        APPID: process.env.REACT_APP_OPEN_WEATHER_KEY
       }
     });
 

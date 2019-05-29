@@ -8,7 +8,7 @@ const fetchData = async (coordinates) => {
       params: {
         lat: coordinates.latitude,
         lon: coordinates.longitude,
-        APPID: '6628a1835fed01ea65e1905d03b57f12'
+        APPID: process.env.REACT_APP_OPEN_WEATHER_KEY
       }
     });
 

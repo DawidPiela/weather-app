@@ -4,6 +4,7 @@ import WeatherInfo from '../../components/WeatherInfo/WeatherInfo';
 
 export const LongTermWeather = ({ weather, onFetchLongtermWeather }) => {
   const [coordinates, setCoordinates] = useState(null);
+  let hour = null;
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -23,10 +24,22 @@ export const LongTermWeather = ({ weather, onFetchLongtermWeather }) => {
     return null;
   }
 
+  const even = (data) => {
+    const date = new Date(data.dt_txt);
+    const hours = date.getDay();
+    if (hours === hour) {
+      hour = hours;
+      return false
+    } else {
+      hour = hours;
+      return true;
+    }
+  };
+
   return (
     <Fragment>
       <h3>Weather Info for {weather.city.name}</h3>
-      {Object.values(weather.list).slice(0, 5).map((element) => (
+      {Object.values(weather.list).filter(even).map((element) => (
         <WeatherInfo key={element.dt} data={element} />
       ))}
     </Fragment>
