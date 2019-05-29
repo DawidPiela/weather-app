@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
+import { CurrentWeather } from '../../components/CurrentWeather/CurrentWeather';
 import * as actions from '../../store/actions/index';
 import openWeatherInstance from '../../utils/openWeatherMapApi';
 import airlyInstance from '../../utils/airlyApi';
@@ -22,11 +22,9 @@ const mapDispatchToProps = dispatch => ({
         }
       })
       .then(response => {
-        console.log('1');
         dispatch(actions.setCurrentWeather(response.data));
       })
       .catch(() => {
-        console.log('2');
         dispatch(actions.fetchCurrentWeatherFailed());
       }),
   onFetchSmog: coordinates =>
@@ -46,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
       })
 });
 
-export const CurrentWeatherContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CurrentWeather);

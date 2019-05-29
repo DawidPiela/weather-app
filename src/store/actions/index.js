@@ -9,8 +9,8 @@ export {
   fetchCurrentWeatherFailed,
   setCurrentSmog,
   fetchCurrentSmogFailed,
-  initCurrentWeather,
-  onFetchWeather
+  // initCurrentWeather,
+  // onFetchWeather
 } from './currentWeather';
 
 export {
