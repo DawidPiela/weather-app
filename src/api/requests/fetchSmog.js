@@ -14,7 +14,6 @@ const fetchData = async (coordinates) => {
 
     return data;
   } catch (error) {
-    return error;
   }
 };
 

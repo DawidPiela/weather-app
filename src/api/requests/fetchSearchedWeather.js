@@ -13,7 +13,6 @@ const fetchData = async (city) => {
 
     return data;
   } catch (error) {
-    return error;
   }
 };
 

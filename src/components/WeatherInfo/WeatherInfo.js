@@ -15,22 +15,22 @@ const WeatherInfo = props => {
   }
 
   const cityName = data.name;
-  const temperature = (data.main.temp - 273.15).toFixed(0) + ` °C`;
-  const pressure = data.main.pressure + ` hPa`;
+  const temperature = `${(data.main.temp - 273.15).toFixed(0)} °C`;
+  const pressure = `${data.main.pressure} hPa`;
   const rain = data.weather[0].description;
-  const wind = data.wind.speed + ` m/s`;
+  const wind = `${data.wind.speed} m/s`;
 
   return (
-    <div>
+    <div className='weather-info'>
       {!data.name ? null :
-        <h3>Weather Info for {cityName}</h3>
+        <h3 className='weather-info__header'>Weather Info for {cityName}</h3>
       }
-      <ul>
+      <ul className='weather-info__list'>
         {dateInfo}
-        <li>pressure: {pressure}</li>
-        <li>temperature: {temperature}</li>
-        <li>rain: {rain}</li>
-        <li>wind: {wind}</li>
+        <li className='weather-info__list-item'>pressure: {pressure}</li>
+        <li className='weather-info__list-item'>temperature: {temperature}</li>
+        <li className='weather-info__list-item'>rain: {rain}</li>
+        <li className='weather-info__list-item'>wind: {wind}</li>
       </ul>
     </div>
   )
