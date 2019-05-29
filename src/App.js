@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
-import Panel from './components/Panel/Panel';
 import Layout from './containers/Layout/Layout';
 
 const CurrentWeather = React.lazy(() => {
@@ -22,7 +21,8 @@ const App = () => {
       <Route path='/current' component={CurrentWeather} />} />
       <Route path='/longterm' component={LongTermWeather} />
       <Route path='/search' component={SearchWeather} />
-      <Route path='/' exact component={Panel} />
+      {/* <Route path='/' exact component={Panel} /> */}
+      <Redirect to='/current' />
     </Switch>
   );
 

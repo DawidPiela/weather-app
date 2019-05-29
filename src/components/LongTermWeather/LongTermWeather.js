@@ -24,7 +24,7 @@ export const LongTermWeather = ({ weather, onFetchLongtermWeather }) => {
     return null;
   }
 
-  const even = (data) => {
+  const oneDay = (data) => {
     const date = new Date(data.dt_txt);
     const hours = date.getDay();
     if (hours === hour) {
@@ -39,7 +39,7 @@ export const LongTermWeather = ({ weather, onFetchLongtermWeather }) => {
   return (
     <Fragment>
       <h3>Weather Info for {weather.city.name}</h3>
-      {Object.values(weather.list).filter(even).map((element) => (
+      {Object.values(weather.list).filter(oneDay).map((element) => (
         <WeatherInfo key={element.dt} data={element} />
       ))}
     </Fragment>
