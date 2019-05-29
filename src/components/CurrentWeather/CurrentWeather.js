@@ -8,7 +8,7 @@ export const CurrentWeather = ({ weather, smog, onFetchWeather, onFetchSmog }) =
 
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(({ coords }) => {
+      navigator.geolocation.getCurrentPosition(({ coords }) => {
         setCoordinates(coords);
       });
     }
