@@ -34,7 +34,7 @@ export const fetchCurrentSmogFailed = () => {
 export const onFetchWeather = (coordinates) => {
   console.log('3');
   return dispatch => {
-    dispatch(setCurrentWeather(response.data));
+    dispatch(setCurrentWeather());
   }
   // return {
   //   type: actionTypes.ON_FETCH_WEATHER,
